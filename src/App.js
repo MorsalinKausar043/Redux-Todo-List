@@ -69,6 +69,10 @@ const App = () => {
                 value={inputData}
                 type="search"
                 onChange={(e) => setInputData(e.target.value)}
+                onKeyPress={(e) =>
+                  e.key === "Enter" &&
+                  dispatch(addTodo(inputData), setInputData(""))
+                }
               />
               <Tooltip
                 title="Add"
@@ -128,7 +132,7 @@ const App = () => {
               })}
             </Grid>
             {/* delete all data  */}
-            <Stack onClick={_=> dispatch(removeTodo())} >
+            <Stack onClick={(_) => dispatch(removeTodo())}>
               <Tooltip title="Delete">
                 <Button variant="contained">
                   Delete All
